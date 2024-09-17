@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assignment1_theory.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="ai-assignment---search-algorithms">AI Assignment - Search Algorithms</h1>
+<h2 id="ritika-thakur--2022408">Ritika Thakur | 2022408</h2>
+<h4 id="question-1">Question 1:</h4>
+<p><img src="WhatsApp Image 2024-09-17 at 23.22.13_9f4fa843.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.14_9c6171de.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.14_7c576f29.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.14_6766d65b.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.15_6137d2ce.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.15_11983d86.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.15_657454e7.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.16_8a631896.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.16_206a6f41.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.17_837eb994.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.17_341d8a5a.jpg" alt="alt text"></p>
+<h4 id="question-2">Question 2:</h4>
+<p><img src="WhatsApp Image 2024-09-17 at 23.22.17_e614715d.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.17_69dc03a8.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.18_eea16e8e.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.18_4f529176.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.18_5128c6f5.jpg" alt="alt text">
+<img src="WhatsApp Image 2024-09-17 at 23.22.19_8a71320f.jpg" alt="alt text"></p>
+<h4 id="question-3">Question 3:</h4>
+<p>(a) Implemented in code_2022408.py</p>
+<p>(b) We notice that the path obtained to travel from u to v for Iterative Deepening Search and Bidirectional Search is the same for all public test cases. However, it will not always be identical for all possible test cases. This is because during Iterative Deepening Search, the path is obtained by performing a depth-first search with a depth limit. The path obtained is the first path that is found by the algorithm. On the other hand, Bidirectional Search is a graph search algorithm that starts the search from both the source and the destination nodes. The algorithm stops when the two searches meet. The path obtained is the shortest path between the source and the destination nodes. The path obtained by the two algorithms will be the same when the first path found by Iterative Deepening Search is the shortest path between the source and the destination nodes. This will not always be the case, as the path obtained by Iterative Deepening Search may not be the shortest path between the source and the destination nodes. Hence, the path obtained by the two algorithms will not always be identical for all possible test cases.</p>
+<p>(c) <img src="WhatsApp Image 2024-09-17 at 04.14.34_4eb6d46c.jpg" alt="alt text">
+The above figure shows the total time and space taken by Iterative Deepening Search and Bidirectional Search for the public test cases. We notice that the time and space taken by Iterative Deepening Search is greater than the time and space taken by Bidirectional Search for all public test cases. This is because Iterative Deepening Search is a depth-first search algorithm that performs a depth-first search with a depth limit. The algorithm continues to increase the depth limit until the goal node is found. This results in the algorithm exploring a large number of nodes, which increases the time and space complexity of the algorithm. On the other hand, Bidirectional Search is a graph search algorithm that starts the search from both the source and the destination nodes. The algorithm stops when the two searches meet. This results in the algorithm exploring a smaller number of nodes, which decreases the time and space complexity of the algorithm. Hence, the time and space taken by Iterative Deepening Search is greater than the time and space taken by Bidirectional Search for all public test cases.</p>
+<p>Below is a scatter plot showing the same:
+<img src="WhatsApp Image 2024-09-17 at 04.14.20_11f28c1e.jpg" alt="alt text"></p>
+<p>(d) Implemented in code_2022408.py</p>
+<p>(e) We notice that the path obtained to travel from u to v is not identical for all public test cases for A star Search and Bidirectional Heuristic Search. This is because A star Search is a graph search algorithm that uses a heuristic function to estimate the cost of reaching the goal node from the current node. The algorithm uses this heuristic function to guide the search towards the goal node. On the other hand, Bidirectional Heuristic Search is a graph search algorithm that starts the search from both the source and the destination nodes. The algorithm stops when the two searches meet. The path obtained is the shortest path between the source and the destination nodes. The path obtained by the two algorithms will be the same when the heuristic function used by A star Search is admissible and consistent. This will not always be the case, as the heuristic function used by A star Search may not be admissible and consistent. Hence, the path obtained by the two algorithms will not always be identical for all possible test cases.</p>
+<p><img src="WhatsApp Image 2024-09-17 at 03.47.35_0bb907db.jpg" alt="alt text">
+The above figure shows the total time and space taken by A star Search and Bidirectional Heuristic Search for the public test cases. We notice that the time and space taken by A star Search is greater than the time and space taken by Bidirectional Heuristic Search for all public test cases. This is because A star Search is a graph search algorithm that uses a heuristic function to estimate the cost of reaching the goal node from the current node. The algorithm uses this heuristic function to guide the search towards the goal node. The time and space complexity of the algorithm depends on the heuristic function used. On the other hand, Bidirectional Heuristic Search is a graph search algorithm that starts the search from both the source and the destination nodes. The algorithm stops when the two searches meet. This results in the algorithm exploring a smaller number of nodes, which decreases the time and space complexity of the algorithm. Hence, the time and space taken by A star Search is greater than the time and space taken by Bidirectional Heuristic Search for all public test cases.</p>
+<p>Below is a scatter plot showing the same:
+<img src="WhatsApp Image 2024-09-17 at 03.47.39_a7370dfb.jpg" alt="alt text"></p>
+<p>(f) Below is a scatter plot comparing all the abpve discussed uninformed and informed search algorithms:
+<img src="WhatsApp Image 2024-09-17 at 03.40.54_ab4758ab.jpg" alt="alt text"></p>
+<p>The total time and space taken by the above discussed uninformed and informed search algorithms are as follows:
+<img src="WhatsApp Image 2024-09-17 at 03.40.50_43ff0a99.jpg" alt="alt text"></p>
+<p>The uninformed search algorithms are Iterative Deepening Search and Bidirectional Search. The informed search algorithms are A star Search and Bidirectional Heuristic Search. <br>
+IDS takes the largest amount of time making it least optimal out of all four algorithms.
+Bidirectional Heuristic and Bidirectional Search take approximately the same amount of time, followed by A star Search which is not greater by a large margin but only a small one.<br>
+A star Search takes the most amount of space with IDS not far behind making these te least efficient. Bidirectional Search takes the least amount of space making it the most efficient and Bidierectional Heuristic Search lies comfortably between IDS and Bidirectional Search.<br>
+The metric to obtain the scatter plot is the total amount of time and space taken by all four algirthms for each pair of nodes. The x-axis represents the total amount of space taken by the algorithms and the y-axis represents the total amount of time taken by the algorithms. The scatter plot shows the total time and space taken by the algorithms for each pair of nodes.</p>
+<h4 id="benefits-of-using-informed-search-algorithms-over-uninformed-search-algorithms">Benefits of using informed search algorithms over uninformed search algorithms:</h4>
+<ol>
+<li>Informed search algorithms use a heuristic function to estimate the cost of reaching the goal node from the current node. This heuristic function guides the search towards the goal node, which helps in reducing the time and space complexity of the algorithm.</li>
+<li>Informed search algorithms are more optimal than uninformed search algorithms as they use additional information about the problem domain to guide the search towards the goal node.</li>
+</ol>
+<h4 id="limitations-of-using-informed-search-algorithms-over-uninformed-search-algorithms">Limitations of using informed search algorithms over uninformed search algorithms:</h4>
+<ol>
+<li>Informed search algorithms may not always find the optimal path between the source and the destination nodes. This is because the heuristic function used by the algorithm may not be admissible and consistent.</li>
+<li>Informed search algorithms may take more space than uninformed search algorithms. This is because the algorithm needs to store additional information about the problem domain to guide the search towards the goal node.</li>
+</ol>
+<p>(g) Implemented in code_2022408.py</p>
+
+</body>
+</html>
